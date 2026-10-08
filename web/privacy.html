@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scribble - Privacy Policy & Account Deletion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FBF9F6;
+      --surface: #FFFFFF;
+      --primary: #B52705;
+      --primary-container: #FF5C38;
+      --primary-light: #FFDAD2;
+      --on-surface: #1B1C1A;
+      --on-surface-variant: #5B413B;
+      --outline: #8F7069;
+      --outline-variant: #E3BEB6;
+      --error: #BA1A1A;
+      --card-shadow: 0 4px 24px rgba(91, 65, 59, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--on-surface);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .header-card {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(227, 190, 182, 0.4);
+      margin-bottom: 32px;
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #FF5C38, #B52705);
+      border-radius: 18px;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-style: italic;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 16px rgba(255, 92, 56, 0.25);
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--on-surface);
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .meta-date {
+      color: var(--outline);
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .lead-text {
+      color: var(--on-surface-variant);
+      font-size: 16px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.primary {
+      background: var(--primary-container);
+      color: white;
+    }
+
+    .tab-btn.secondary {
+      background: var(--surface);
+      color: var(--on-surface-variant);
+      border: 1px solid var(--outline-variant);
+    }
+
+    .tab-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .section-card {
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(227, 190, 182, 0.3);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    p, li {
+      font-size: 15px;
+      color: var(--on-surface-variant);
+      line-height: 1.7;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .highlight-box {
+      background: #FFF5F2;
+      border-left: 4px solid var(--primary-container);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 16px 0;
+    }
+
+    .delete-card {
+      background: #FFF9F8;
+      border: 1.5px solid var(--outline-variant);
+    }
+
+    .delete-card h2 {
+      color: var(--error);
+    }
+
+    .form-group {
+      margin-top: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--on-surface);
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--outline-variant);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 14px;
+      background: white;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-container);
+      box-shadow: 0 0 0 3px rgba(255, 92, 56, 0.15);
+    }
+
+    .submit-btn {
+      background: var(--error);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: background 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background: #931414;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      color: var(--outline);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header-card">
+      <div class="logo-badge">S</div>
+      <h1>Scribble Privacy Policy</h1>
+      <p class="meta-date">Google Play Store & Android Policy Compliant • Last Updated: October 2026</p>
+      <p class="lead-text">
+        Scribble is a private handwritten note & doodle sharing application for couples and close friends. We are dedicated to respecting and protecting your privacy.
+      </p>
+      <div class="nav-tabs">
+        <a href="#policy" class="tab-btn primary">Read Privacy Policy</a>
+        <a href="#deletion" class="tab-btn secondary">Request Account & Data Deletion</a>
+      </div>
+    </header>
+
+    <div id="policy">
+      <!-- Section 1 -->
+      <section class="section-card">
+        <h2>1. Information We Collect</h2>
+        <p>We collect only the minimum necessary data required to connect you with your partner and synchronize drawings in real time:</p>
+        <ul>
+          <li><strong>Account Information:</strong> When you register an account, we collect your email address and chosen display username. If you use "Sign in with Google", we receive your public Google profile name, email, and avatar URL.</li>
+          <li><strong>User Content:</strong> Handwritten stroke vectors, drawings, custom text notes, and doodle graphics shared between you and your paired partner.</li>
+          <li><strong>Device & Messaging Identifiers:</strong> Firebase Cloud Messaging (FCM) tokens required to push notifications when your partner sends a new doodle.</li>
+          <li><strong>Temporary Guest Data:</strong> For users who choose "Continue as Guest", an ephemeral anonymous session identifier is created. No email address is gathered.</li>
+        </ul>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="section-card">
+        <h2>2. How We Use Your Information</h2>
+        <p>Your data is used strictly for the following purposes:</p>
+        <ul>
+          <li>Delivering real-time scribbles and notes to your paired partner's device.</li>
+          <li>Updating your Android Home Screen Widget and Lock Screen background with the latest doodle.</li>
+          <li>Authenticating your account securely across sessions.</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>Privacy Commitment:</strong> We DO NOT sell, rent, or trade your personal information or handwritten doodles to third parties or advertising brokers.
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="section-card">
+        <h2>3. Third-Party Service Providers</h2>
+        <p>We rely on trusted third-party service providers who operate under strict data protection standards:</p>
+        <ul>
+          <li><strong>Google Firebase (Firebase Auth, Cloud Firestore, Firebase Storage, FCM):</strong> Used for secure cloud database hosting, real-time sync, and notification dispatch. (Governed by <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>).</li>
+          <li><strong>Cloudinary CDN:</strong> Used for optimized image delivery and CDN storage of shared doodle artwork. (Governed by <a href="https://cloudinary.com/privacy" target="_blank" rel="noopener">Cloudinary Privacy Policy</a>).</li>
+        </ul>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="section-card">
+        <h2>4. Android Permissions Justification</h2>
+        <p>Scribble requests only the minimum required Android runtime permissions:</p>
+        <ul>
+          <li><strong>POST_NOTIFICATIONS:</strong> Required to alert you when your paired partner sends a new doodle.</li>
+          <li><strong>FOREGROUND_SERVICE_DATA_SYNC:</strong> Required to briefly download and render doodles directly to your Android Home Screen Widget and Lock Screen without delay.</li>
+          <li><strong>No Storage Permissions (READ_MEDIA_IMAGES):</strong> Scribble utilizes the modern native Android Photo Picker. We do not access or read your photo gallery files.</li>
+        </ul>
+      </section>
+
+      <!-- Section 5: Children -->
+      <section class="section-card">
+        <h2>5. Children's Privacy</h2>
+        <p>
+          Scribble is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe personal data of a minor has been collected, please submit an account deletion request below.
+        </p>
+      </section>
+    </div>
+
+    <!-- Section 6: Deletion Portal (Google Play Policy Mandate) -->
+    <div id="deletion">
+      <section class="section-card delete-card">
+        <h2>6. Account & Data Deletion Policy</h2>
+        <p>
+          In full compliance with Google Play Store's User Data & Account Deletion Policy, users have the right to permanently delete their account and all associated cloud data at any time.
+        </p>
+
+        <div class="highlight-box">
+          <strong>What happens when you delete your account:</strong>
+          <ul>
+            <li>Your user profile and credentials are permanently purged from Firebase Authentication.</li>
+            <li>All active paired connections with partners are terminated.</li>
+            <li>All sent drawings, scribbles, notes, and history archives in Cloud Firestore and Cloudinary are permanently deleted.</li>
+            <li>Local lock screen cache and widget preferences on your device are wiped.</li>
+          </ul>
+        </div>
+
+        <h3 style="margin-top: 20px; font-size: 16px; font-weight: 700;">Option A: In-App Deletion (Instant)</h3>
+        <p style="margin-top: 6px;">
+          1. Open the <strong>Scribble</strong> app on your Android device.<br>
+          2. Tap the <strong>Profile</strong> tab in the navigation bar.<br>
+          3. Scroll to the bottom and tap <strong>"Delete Account Permanently"</strong>.<br>
+          4. Confirm the prompt to immediately wipe all your data.
+        </p>
+
+        <h3 style="margin-top: 24px; font-size: 16px; font-weight: 700;">Option B: Web Deletion Request (If App is Uninstalled)</h3>
+        <p style="margin-top: 6px;">
+          If you have uninstalled Scribble, fill out the deletion request below or email us directly at <a href="mailto:support@scribble-app.internal?subject=Account%20Deletion%20Request">support@scribble-app.internal</a>. Requests are processed within 48 hours.
+        </p>
+
+        <form class="form-group" onsubmit="event.preventDefault(); alert('Deletion request received. If valid, your account and all associated data will be purged within 48 hours.');">
+          <div style="margin-bottom: 12px;">
+            <label for="email">Registered Email Address:</label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+          </div>
+          <div style="margin-bottom: 12px;">
+            <label for="username">Username or Partner Pairing Code (Optional):</label>
+            <input type="text" id="username" placeholder="e.g. Maya or ABC-123">
+          </div>
+          <button type="submit" class="submit-btn">Submit Account Deletion Request</button>
+        </form>
+      </section>
+    </div>
+
+    <!-- Contact -->
+    <section class="section-card">
+      <h2>7. Contact Information</h2>
+      <p>
+        If you have questions regarding this Privacy Policy or your data, please contact the developer:<br>
+        <strong>Application:</strong> Scribble for Android<br>
+        <strong>Support Email:</strong> <a href="mailto:support@scribble-app.internal">support@scribble-app.internal</a>
+      </p>
+    </section>
+
+    <footer>
+      <p>© 2026 Scribble App. All rights reserved.</p>
+    </footer>
+  </div>
+
+</body>
+</html>
