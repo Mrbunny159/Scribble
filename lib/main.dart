@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -12,6 +13,9 @@ import 'services/native_lockscreen_service.dart';
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   try {
+    try {
+      await dotenv.load(fileName: ".env");
+    } catch (_) {}
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     final imageUrl = message.data['image_url'] as String?;
     final senderName = message.data['sender_name'] as String? ?? 'Partner';
@@ -32,6 +36,13 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load environment variables from .env
+  try {
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    debugPrint('dotenv initialization notice: $e');
+  }
 
   bool firebaseInitialized = false;
   try {

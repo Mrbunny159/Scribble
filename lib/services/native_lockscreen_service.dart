@@ -139,8 +139,6 @@ class NativeLockscreenService {
   /// Start Android foreground background service to keep lock screen syncing even when app is closed / phone locked
   Future<bool> startBackgroundSync({
     String projectId = 'scribble-6d33a',
-    String? supabaseUrl,
-    String? anonKey,
     required String connectionId,
     required String myUserId,
     String partnerName = 'Partner',

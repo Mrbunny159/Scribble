@@ -10,15 +10,15 @@ void main() {
     expect(find.text('Firebase Setup Error'), findsOneWidget);
   });
 
-  test('ConnectionModel safely parses Supabase snake_case columns', () {
-    final supabaseMap = {
+  test('ConnectionModel safely parses snake_case columns', () {
+    final connectionMap = {
       'id': 'conn-123',
       'user_1': 'user-alice',
       'user_2': 'user-bob',
       'created_at': '2026-09-29T00:00:00.000Z',
     };
 
-    final conn = ConnectionModel.fromMap(supabaseMap);
+    final conn = ConnectionModel.fromMap(connectionMap);
     expect(conn.id, 'conn-123');
     expect(conn.user1, 'user-alice');
     expect(conn.user2, 'user-bob');

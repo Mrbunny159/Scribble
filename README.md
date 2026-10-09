@@ -10,8 +10,7 @@
   [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
   [![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
   [![Android Target SDK](https://img.shields.io/badge/Android-SDK_35_(Android_15)-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com)
-  [![Supabase](https://img.shields.io/badge/Supabase-Realtime_&_Postgres-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com)
-  [![Firebase](https://img.shields.io/badge/Firebase-Auth_&_FCM-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
+  [![Firebase](https://img.shields.io/badge/Firebase-Auth,_Firestore_&_FCM-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
   [![License](https://img.shields.io/badge/License-Proprietary-red.svg?style=for-the-badge)](#)
 
 </div>
@@ -27,7 +26,7 @@
   - [3. Canvas Drawing Studio](#3-canvas-drawing-studio)
   - [4. Seamless Pairing & Connection Hub](#4-seamless-pairing--connection-hub)
   - [5. Cross-Platform Web App & Lock Screen Simulator](#5-cross-platform-web-app--lock-screen-simulator)
-  - [6. Dual-Backend Architecture (Supabase & Firebase)](#6-dual-backend-architecture-supabase--firebase)
+  - [6. Cloud Backend Architecture (Firebase Suite)](#6-cloud-backend-architecture-firebase-suite)
   - [7. Cloudinary High-Speed CDN Pipeline](#7-cloudinary-high-speed-cdn-pipeline)
   - [8. Google Play Store & Android 15 Compliance](#8-google-play-store--android-15-compliance)
 - [System Architecture](#-system-architecture)
@@ -36,10 +35,9 @@
 - [Getting Started](#-getting-started)
   - [Step 1: Clone the Repository](#step-1-clone-the-repository)
   - [Step 2: Install Flutter Dependencies](#step-2-install-flutter-dependencies)
-  - [Step 3: Supabase Backend Setup](#step-3-supabase-backend-setup)
-  - [Step 4: Firebase Configuration](#step-4-firebase-configuration)
-  - [Step 5: Cloudinary Setup (Optional CDN)](#step-5-cloudinary-setup-optional-cdn)
-  - [Step 6: Configure App Credentials](#step-6-configure-app-credentials)
+  - [Step 3: Firebase Configuration](#step-3-firebase-configuration)
+  - [Step 4: Cloudinary Setup (Optional CDN)](#step-4-cloudinary-setup-optional-cdn)
+  - [Step 5: Configure App Credentials](#step-5-configure-app-credentials)
 - [Running the Application](#-running-the-application)
 - [Building for Production](#-building-for-production)
 - [Android Native Permissions & Background Services](#-android-native-permissions--background-services)
@@ -52,7 +50,7 @@
 
 **Scribble** bridges the distance between loved ones, partners, and close friends by turning your phone's lock screen into a shared live digital canvas. Whenever you draw a doodle, jot a quick note, or sketch something fun, your drawing instantly illuminates on your recipient's Android lock screen and home screen widget in real-time.
 
-Built with a unified **Flutter** frontend, high-performance native **Android Kotlin** services, and scalable cloud synchronization via **Supabase** and **Firebase**, Scribble delivers smooth 60fps drawing physics, instant push notifications, and lock-screen rendering while respecting Android 15 battery and security regulations.
+Built with a unified **Flutter** frontend, high-performance native **Android Kotlin** services, and scalable cloud synchronization via **Firebase** (Auth, Firestore, FCM) and **Cloudinary**, Scribble delivers smooth 60fps drawing physics, instant push notifications, and lock-screen rendering while respecting Android 15 battery and security regulations.
 
 ---
 
@@ -91,21 +89,17 @@ Built with a unified **Flutter** frontend, high-performance native **Android Kot
 * **Full Desktop & Mobile Web Experience**: Access the complete canvas, pairing hub, and profile manager in any modern web browser.
 * **Interactive Android Lock Screen Simulator**: Web users can preview their drawings inside an interactive, photorealistic Android smartphone frame to see exactly how their scribble looks on their partner's phone lock screen!
 
-### 6. Dual-Backend Architecture (Supabase & Firebase)
-* **Supabase Integration**:
-  - PostgreSQL database with Row Level Security (RLS) policies.
-  - Realtime publication channels (`supabase_realtime`) for sub-second socket updates.
-  - Supabase Storage buckets for avatar uploads and canvas snapshots.
-* **Firebase Integration**:
-  - Firebase Authentication with email/password and guest sign-in.
-  - Cloud Firestore real-time snapshot listeners.
-  - Firebase Cloud Messaging (FCM) background handler for waking up sleeping devices to render new lock screen art.
-  - Firebase Hosting configuration included out-of-the-box.
+### 6. Cloud Backend Architecture (Firebase Suite)
+* **Firebase Authentication**: Email/password registration, Google Sign-In with avatar sync, and anonymous 1-tap guest sessions.
+* **Cloud Firestore Real-Time Database**: Sub-second document listeners for live scribble syncing, user profile updates, and active connection management.
+* **Firebase Cloud Messaging (FCM)**: Silent data and notification messages wake up devices in Doze mode to immediately download and apply new lock screen drawings.
+* **Firebase Cloud Storage**: Secure cloud storage for user avatars and canvas image archives.
+* **Firebase Hosting**: Production-grade web deployment with automatic single-page application routing.
 
 ### 7. Cloudinary High-Speed CDN Pipeline
 * **Unsigned CDN Uploads**: Ultra-fast media compression and image delivery powered by Cloudinary's worldwide CDN.
 * **Zero Secret Exposure**: Client uploads utilize unsigned upload presets, ensuring no API secrets are bundled into client APKs or web builds.
-* **Graceful Fallback**: Automatically falls back to Supabase/Firebase storage if custom Cloudinary credentials are not configured.
+* **Graceful Fallback**: Automatically falls back to Firebase Storage if custom Cloudinary credentials are not configured.
 
 ### 8. Google Play Store & Android 15 Compliance
 * **Android 15 Ready**: Configured for `targetSdk = 35` and `compileSdk = 35`.
@@ -138,24 +132,23 @@ Built with a unified **Flutter** frontend, high-performance native **Android Kot
                        │                                               │
                        └───────────────────────┬───────────────────────┘
                                                │
-                        ┌──────────────────────┴──────────────────────┐
-                        ▼                                             ▼
-       ┌─────────────────────────────────┐           ┌─────────────────────────────────┐
-       │        Supabase Cloud           │           │         Firebase Suite          │
-       ├─────────────────────────────────┤           ├─────────────────────────────────┤
-       │ • PostgreSQL (RLS Enforced)     │           │ • Firebase Authentication       │
-       │ • Realtime WebSocket Channels   │           │ • Cloud Firestore Realtime Sync │
-       │ • Public Storage Buckets        │           │ • Cloud Messaging (FCM Push)    │
-       │   (`avatars`, `scribbles`)      │           │ • Firebase Web Hosting          │
-       └────────────────┬────────────────┘           └────────────────┬────────────────┘
-                        │                                             │
-                        └──────────────────────┬──────────────────────┘
                                                ▼
-                               ┌────────────────────────────────┐
-                               │      Cloudinary CDN (Media)    │
-                               │  • Unsigned fast image uploads │
-                               │  • Dynamic edge image caching  │
-                               └────────────────────────────────┘
+                              ┌─────────────────────────────────┐
+                              │      Firebase Cloud Suite       │
+                              ├─────────────────────────────────┤
+                              │ • Firebase Authentication       │
+                              │ • Cloud Firestore Realtime Sync │
+                              │ • Cloud Messaging (FCM Push)    │
+                              │ • Firebase Storage (Buckets)    │
+                              │ • Firebase Web Hosting          │
+                              └────────────────┬────────────────┘
+                                               │
+                                               ▼
+                              ┌────────────────────────────────┐
+                              │      Cloudinary CDN (Media)    │
+                              │  • Unsigned fast image uploads │
+                              │  • Dynamic edge image caching  │
+                              └────────────────────────────────┘
 ```
 
 ---
@@ -198,14 +191,12 @@ Scribble/
 │   │   ├── home/                  # Main hub, active partner switcher & slider
 │   │   ├── legal/                 # In-app privacy policy & terms
 │   │   ├── pairing/               # 6-character pairing code management
-│   │   ├── profile/               # Avatar upload & account deletion
-│   │   └── setup/                 # First-run Supabase configuration UI
+│   │   └── profile/               # Avatar upload & account deletion
 │   ├── services/
 │   │   ├── cloudinary_service.dart# Unsigned media upload handling
 │   │   ├── firebase_service.dart  # Firestore sync, Auth & account cleanup
 │   │   ├── image_save_service.dart# Local storage & gallery exporter
-│   │   ├── native_lockscreen_service.dart # Flutter-to-Kotlin MethodChannel
-│   │   └── supabase_service.dart  # Supabase client, tables & realtime channels
+│   │   └── native_lockscreen_service.dart # Flutter-to-Kotlin MethodChannel
 │   ├── widgets/
 │   │   └── scribble_logo.dart     # Responsive vector/image branding components
 │   ├── firebase_options.dart      # FlutterFire auto-generated configuration
@@ -222,8 +213,7 @@ Scribble/
 ├── firestore.indexes.json         # Firestore composite index definitions
 ├── firestore.rules                # Firestore security rules
 ├── PLAY_STORE_GUIDELINES.md       # Google Play Store review & compliance guide
-├── pubspec.yaml                   # Flutter package dependencies & assets
-└── supabase_schema.sql            # Supabase PostgreSQL schema, RLS & publications
+└── pubspec.yaml                   # Flutter package dependencies & assets
 ```
 
 ---
@@ -263,26 +253,9 @@ flutter pub get
 
 ---
 
-### Step 3: Supabase Backend Setup
+### Step 3: Firebase Configuration
 
-Scribble uses Supabase for Postgres storage, user profiles, and real-time canvas updates.
-
-1. Create a free account and new project at [supabase.com](https://supabase.com).
-2. Open the **SQL Editor** in your Supabase Project Dashboard.
-3. Open [`supabase_schema.sql`](supabase_schema.sql) in this repository, copy the entire SQL script, and click **Run**.
-   - This sets up the `profiles`, `pairing_codes`, `connections`, and `scribbles` tables.
-   - It automatically enables **Row Level Security (RLS)** policies.
-   - It registers tables to the `supabase_realtime` publication for instant synchronization.
-   - It creates two public storage buckets: `avatars` and `scribbles`.
-4. Go to **Project Settings** -> **API** to copy your:
-   - **Project URL** (e.g., `https://your-project-id.supabase.co`)
-   - **anon / public Key** (e.g., `eyJhbGciOi...`)
-
----
-
-### Step 4: Firebase Configuration
-
-Scribble integrates Firebase for authentication, Firestore data archiving, and background FCM push messages:
+Scribble integrates Firebase for authentication, Firestore real-time data archiving, and background FCM push messages:
 
 1. Create a project at [Firebase Console](https://console.firebase.google.com).
 2. Add an **Android app** with package name:
@@ -293,15 +266,15 @@ Scribble integrates Firebase for authentication, Firestore data archiving, and b
    ```text
    android/app/google-services.json
    ```
-4. Enable **Authentication** in Firebase (Email/Password & Anonymous).
+4. Enable **Authentication** in Firebase (Email/Password, Google Sign-In & Anonymous).
 5. Enable **Cloud Firestore** and deploy the included security rules:
    ```bash
-   firebase deploy --only firestore:rules
+   firebase deploy --only firestore
    ```
 
 ---
 
-### Step 5: Cloudinary Setup (Optional CDN)
+### Step 4: Cloudinary Setup (Optional CDN)
 
 Cloudinary provides high-speed CDN image distribution with automatic optimization:
 
@@ -312,27 +285,30 @@ Cloudinary provides high-speed CDN image distribution with automatic optimizatio
 
 ---
 
-### Step 6: Configure App Credentials
+### Step 5: Configure App Credentials
 
-You can supply your credentials using either approach:
+Copy the template file `.env.example` to `.env`:
 
-#### Method A: In-App UI Configuration (Easiest)
-Simply run the app. On initial launch, Scribble presents the **Supabase Setup Screen**, allowing you to paste your URL and Anon Key directly into the running app.
-
-#### Method B: In Code
-Open [`lib/core/constants.dart`](lib/core/constants.dart) and enter your credentials:
-
-```dart
-class AppConstants {
-  // Supabase Credentials
-  static const String supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
-  static const String supabaseAnonKey = 'YOUR_SUPABASE_ANON_PUBLIC_KEY';
-
-  // Cloudinary CDN Configuration
-  static const String cloudinaryCloudName = 'YOUR_CLOUDINARY_CLOUD_NAME';
-  static const String cloudinaryUploadPreset = 'scribble_preset';
-}
+```bash
+cp .env.example .env
 ```
+
+Open `.env` and fill in your actual service credentials:
+
+```env
+# Cloudinary Credentials (Optional CDN)
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_UPLOAD_PRESET=your_upload_preset
+
+# Firebase Configuration
+FIREBASE_API_KEY=your_firebase_api_key
+FIREBASE_APP_ID_ANDROID=1:your_project_number:android:your_app_hash
+FIREBASE_APP_ID_WEB=1:your_project_number:web:your_app_hash
+FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_STORAGE_BUCKET=your_project_id.firebasestorage.app
+```
+
 
 ---
 
@@ -396,7 +372,7 @@ Scribble requests only the minimum set of permissions necessary to function:
 
 | Permission | Purpose |
 | :--- | :--- |
-| `android.permission.INTERNET` | Communication with Supabase, Firebase, and Cloudinary APIs. |
+| `android.permission.INTERNET` | Communication with Firebase and Cloudinary APIs. |
 | `android.permission.ACCESS_NETWORK_STATE` | Real-time connectivity monitoring to pause sync when offline. |
 | `android.permission.SET_WALLPAPER` | Setting the received scribble image onto the Android lock screen (`WallpaperManager.FLAG_LOCK`). |
 | `android.permission.POST_NOTIFICATIONS` | Delivering doodle alerts and foreground sync indicators on Android 13+ (API 33+). |
@@ -426,8 +402,8 @@ Scribble is architected from the ground up to comply with the latest Google Play
 When cloning or deploying this repository:
 
 1. **Environment Variables & Secrets**: All `.env`, keystores (`*.jks`, `*.keystore`), and `key.properties` are blocked by [.gitignore](.gitignore).
-2. **Client Keys**: Supabase `anon` public keys and Cloudinary `unsigned` upload presets are specifically designed for safe client-side consumption when backed by Row-Level Security (RLS). Never commit service role or admin secret keys.
-3. **Row-Level Security**: Ensure you execute [`supabase_schema.sql`](supabase_schema.sql) in your database so all tables are protected by PostgreSQL RLS.
+2. **Client Keys**: Cloudinary `unsigned` upload presets are specifically designed for safe client-side consumption. Never commit admin secret keys.
+3. **Firestore Security Rules**: Deploy the included `firestore.rules` to ensure all user documents, connections, and scribbles are strictly authenticated and protected.
 
 ---
 
@@ -442,6 +418,6 @@ This repository, software, visual branding, design systems, and source code are 
 ---
 
 <div align="center">
-  <sub>Built with ❤️ using Flutter, Kotlin, Supabase, and Firebase.</sub><br>
+  <sub>Built with ❤️ using Flutter, Kotlin, and Firebase.</sub><br>
   <sub>Official Repository: <a href="https://github.com/Mrbunny159/Scribble.git">https://github.com/Mrbunny159/Scribble.git</a></sub>
 </div>
