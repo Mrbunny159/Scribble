@@ -1,48 +1,166 @@
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.build/
-.buildlog/
-.history
-.svn/
-.swiftpm/
-migrate_working_dir/
+# ==============================================================================
+# Scribble - Git Ignore Configuration
+# Optimized for Flutter, Android Native, iOS, Web, Desktop & Firebase/Supabase
+# https://github.com/Mrbunny159/Scribble.git
+# ==============================================================================
 
-# IntelliJ related
+# ------------------------------------------------------------------------------
+# Secrets, Environment & Credentials (Public Repo Security)
+# ------------------------------------------------------------------------------
+.env
+.env.*
+*.env
+*.key
+*.pem
+*.p12
+*.p8
+*.mobileprovision
+secrets.json
+secrets.yaml
+credentials.json
+service-account*.json
+
+# ------------------------------------------------------------------------------
+# Android Keystores & Signing Keys
+# ------------------------------------------------------------------------------
+*.jks
+*.keystore
+key.properties
+signing.properties
+android/key.properties
+android/app/key.properties
+android/local.properties
+
+# ------------------------------------------------------------------------------
+# Flutter / Dart Build & Dependency Artifacts
+# ------------------------------------------------------------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+/build/
+**/build/
+**/doc/api/
+/coverage/
+.widget_preview/
+
+# Symbolication & Obfuscation
+app.*.symbols
+app.*.map.json
+
+# ------------------------------------------------------------------------------
+# Android Studio & Gradle
+# ------------------------------------------------------------------------------
+.gradle/
+**/android/.gradle/
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/build/
+**/android/app/build/
+**/android/.cxx/
+**/android/app/.cxx/
+**/android/captures/
+problems-report.html
+
+# ------------------------------------------------------------------------------
+# iOS & macOS (Xcode & CocoaPods)
+# ------------------------------------------------------------------------------
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Runner/GeneratedPluginRegistrant.*
+**/macos/Flutter/ephemeral/
+**/macos/Flutter/GeneratedPluginRegistrant.*
+**/macos/Pods/
+**/macos/.symlinks/
+
+# Xcode User Data & Schemes
+*.mode1v3
+*.mode2v3
+*.moved-aside
+*.pbxuser
+*.perspectivev3
+xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+*.xccheckout
+
+# ------------------------------------------------------------------------------
+# Windows & Linux Desktop Ephemeral Builds
+# ------------------------------------------------------------------------------
+windows/flutter/ephemeral/
+linux/flutter/ephemeral/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# ------------------------------------------------------------------------------
+# Firebase & Hosting Caches
+# ------------------------------------------------------------------------------
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+
+# ------------------------------------------------------------------------------
+# IDEs and Editors
+# ------------------------------------------------------------------------------
+# JetBrains / IntelliJ IDEA
+.idea/
 *.iml
 *.ipr
 *.iws
-.idea/
+android/scribble_android.iml
+scribble.iml
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# Visual Studio Code
+.vscode/
 
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-/build/
-/coverage/
+# Other Editors
+.atom/
+.history/
+*.sublime-project
+*.sublime-workspace
 
-# Symbolication related
-app.*.symbols
+# ------------------------------------------------------------------------------
+# Operating System Artifacts
+# ------------------------------------------------------------------------------
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
 
-# Obfuscation related
-app.*.map.json
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# Linux
+*~
+.fuse_hidden*
+.directory
 
-# Widget Preview related
-.widget_preview/
+# ------------------------------------------------------------------------------
+# Logs & Temporary Files
+# ------------------------------------------------------------------------------
+*.log
+*.tmp
+*.bak
+*.swp
+*.class
+*.pyc
